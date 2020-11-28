@@ -17,8 +17,8 @@
 #define STATE_SHOWING_CLOCK 0
 #define STATE_STARTING_PROCESS 1
 
-uint8_t STATE_Show_Clock();
+CAPSULE_Recipe_TypeDef STATE_Show_Clock();
 
-uint8_t STATE_Start_Process();
+uint8_t STATE_Start_Process(CAPSULE_Recipe_TypeDef capsule);
 
 #endif /* INC_STATES_H_ */

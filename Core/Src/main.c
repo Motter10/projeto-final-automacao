@@ -44,7 +44,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
-uint8_t current_state = STATE_SHOWING_CLOCK;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -97,12 +97,17 @@ int main(void)
   //inicializa LCD em modo 4 bits
   LCD_Init();
 
+
   // calibracao do ADC
 //  	HAL_ADCEx_Calibration_Start(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+  uint8_t current_state = STATE_SHOWING_CLOCK;
+  CAPSULE_Recipe_TypeDef capsule;
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -110,10 +115,11 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	switch (current_state) {
 		case STATE_SHOWING_CLOCK:
-			current_state = STATE_Show_Clock();
+			capsule = STATE_Show_Clock();
+			current_state = STATE_STARTING_PROCESS;
 			break;
 		case STATE_STARTING_PROCESS:
-			current_state = STATE_Start_Process();
+			current_state = STATE_Start_Process(capsule);
 			break;
 		default:
 			break;

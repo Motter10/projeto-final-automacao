@@ -8,10 +8,10 @@
 #include "states.h"
 
 
-uint8_t STATE_Show_Clock()
+CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 {
 	char hour[10];
-	uint8_t recipe = 0;
+	CAPSULE_Recipe_TypeDef capsule;
 	uint8_t insert_button = 0;
 
 	while(1)
@@ -24,19 +24,20 @@ uint8_t STATE_Show_Clock()
 		insert_button = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_INSERT_BUTTON);
 		if(insert_button)
 		{
-			recipe = CAPSULE_Verify_Insertion();
+			capsule = CAPSULE_Verify_Insertion();
 		}
 		HAL_Delay(200);
 
 		//se tiver uma receita, retorna
-		if(recipe){
-			return STATE_STARTING_PROCESS;
+		if(capsule.capsule_type != NONE_CAPSULE_TYPE ){
+
+			return capsule;
 		}
 	}
 }
 
 
-uint8_t STATE_Start_Process()
+uint8_t STATE_Start_Process(CAPSULE_Recipe_TypeDef capsule)
 {
 	while(1)
 	{
