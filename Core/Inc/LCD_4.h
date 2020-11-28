@@ -30,6 +30,8 @@ void LCD_Write_Number(int16_t);
 
 void LCD_Write_Buffer(uint8_t* data);
 
+void LCD_Clear();
+
 void LCD_Create_Custom_Char(uint8_t loc, uint8_t *msg);
 
 void LCD_Init_Custom_Characters();

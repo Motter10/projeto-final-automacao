@@ -86,6 +86,14 @@ void Error_Handler(void);
 #define Button_Increase_GPIO_Port GPIOA
 #define Button_Confirmar_Pin GPIO_PIN_12
 #define Button_Confirmar_GPIO_Port GPIOA
+#define BN1_Bit_0_Pin GPIO_PIN_3
+#define BN1_Bit_0_GPIO_Port GPIOB
+#define BN1_bit_1_Pin GPIO_PIN_4
+#define BN1_bit_1_GPIO_Port GPIOB
+#define BN1_bit_2_Pin GPIO_PIN_5
+#define BN1_bit_2_GPIO_Port GPIOB
+#define Inserir_Capsula_Pin GPIO_PIN_8
+#define Inserir_Capsula_GPIO_Port GPIOB
 #define Display_RS_Pin GPIO_PIN_9
 #define Display_RS_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */

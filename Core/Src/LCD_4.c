@@ -113,6 +113,15 @@ void LCD_Write_Number(int16_t value) {
 }
 
 /**
+ * @brief limpa display e retorna cursor para primeira linha
+ *
+ * @retval Nenhum
+ */
+void LCD_Clear(){
+	LCD_Write(0x01, 0);
+}
+
+/**
  * @brief escreve na CGRAM caracter customizado
  *
  *	escreve caracter na CGRAM a partir do endereço 0x40

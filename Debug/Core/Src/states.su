@@ -1,0 +1,2 @@
+states.c:11:9:STATE_Show_Clock	24	static
+states.c:39:9:STATE_Start_Process	8	static
