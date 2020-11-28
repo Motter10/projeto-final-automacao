@@ -58,6 +58,36 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ADC1_IN0____P1_Pin GPIO_PIN_0
+#define ADC1_IN0____P1_GPIO_Port GPIOA
+#define ADC1_IN1____T1_Pin GPIO_PIN_1
+#define ADC1_IN1____T1_GPIO_Port GPIOA
+#define ADC1_IN2____T2_Pin GPIO_PIN_2
+#define ADC1_IN2____T2_GPIO_Port GPIOA
+#define ADC1_IN4____Buttons_Pin GPIO_PIN_4
+#define ADC1_IN4____Buttons_GPIO_Port GPIOA
+#define Button_Cancelar_Pin GPIO_PIN_5
+#define Button_Cancelar_GPIO_Port GPIOA
+#define Button_Decrease_Pin GPIO_PIN_6
+#define Button_Decrease_GPIO_Port GPIOA
+#define Display_RW_Pin GPIO_PIN_10
+#define Display_RW_GPIO_Port GPIOB
+#define Display_EN_Pin GPIO_PIN_11
+#define Display_EN_GPIO_Port GPIOB
+#define Display_D4_Pin GPIO_PIN_12
+#define Display_D4_GPIO_Port GPIOB
+#define Display_D5_Pin GPIO_PIN_13
+#define Display_D5_GPIO_Port GPIOB
+#define Display_D6_Pin GPIO_PIN_14
+#define Display_D6_GPIO_Port GPIOB
+#define Display_D7_Pin GPIO_PIN_15
+#define Display_D7_GPIO_Port GPIOB
+#define Button_Increase_Pin GPIO_PIN_11
+#define Button_Increase_GPIO_Port GPIOA
+#define Button_Confirmar_Pin GPIO_PIN_12
+#define Button_Confirmar_GPIO_Port GPIOA
+#define Display_RS_Pin GPIO_PIN_9
+#define Display_RS_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

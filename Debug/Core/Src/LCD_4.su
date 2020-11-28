@@ -1,0 +1,7 @@
+LCD_4.c:16:6:LCD_Send	8	static
+LCD_4.c:33:6:LCD_Write	24	static
+LCD_4.c:61:6:LCD_Write_Buffer	24	static
+LCD_4.c:105:6:LCD_Write_Number	32	static
+LCD_4.c:124:6:LCD_Create_Custom_Char	24	static
+LCD_4.c:140:6:LCD_Init_Custom_Characters	48	static
+LCD_4.c:169:6:LCD_Init	8	static
