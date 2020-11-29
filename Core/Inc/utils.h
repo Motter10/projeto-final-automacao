@@ -13,4 +13,6 @@
 
 void UTILS_get_Hour(char *hour);
 
+uint32_t UTILS_To_Temp(uint32_t value);
+
 #endif /* INC_UTILS_H_ */

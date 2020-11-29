@@ -1,4 +1,4 @@
-Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/states.h \
+Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/controller.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -23,9 +23,12 @@ Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/states.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- ../Core/Inc/utils.h ../Core/Inc/LCD_4.h ../Core/Inc/capsule.h
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ ../Core/Inc/utils.h ../Core/Inc/LCD_4.h ../Core/Inc/capsule.h \
+ ../Core/Inc/ADC.h ../Core/Inc/states.h ../Core/Inc/PWM.h
 
-../Core/Inc/states.h:
+../Core/Inc/controller.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
@@ -75,8 +78,18 @@ Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/states.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
+
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+
 ../Core/Inc/utils.h:
 
 ../Core/Inc/LCD_4.h:
 
 ../Core/Inc/capsule.h:
+
+../Core/Inc/ADC.h:
+
+../Core/Inc/states.h:
+
+../Core/Inc/PWM.h:

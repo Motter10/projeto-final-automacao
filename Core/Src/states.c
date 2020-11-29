@@ -5,8 +5,8 @@
  *      Author: sandr
  */
 
+#include "controller.h"
 #include "states.h"
-
 
 CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 {
@@ -65,7 +65,7 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule)
 	}
 }
 
-void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule)
+void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef hadc)
 {
 	LCD_Clear();
 	LCD_Write_Buffer("Iniciando...");
@@ -75,17 +75,19 @@ void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule)
 	while(1)
 	{
 		LCD_Clear();
-		LCD_Write_Buffer("Aguarde...");
+		LCD_Write_Buffer("Aquecendo água.");
 
-		confirm_button = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_INSERT_BUTTON);
+		//se temperatura da água for igual a desejada, aciona válvula de saida de agua quente
+		CONTROLLER_Get_IsReady(hadc, capsule.water_temp, 4);
 
-		if(confirm_button)
-		{
-			return;
+		LCD_Clear();
+		LCD_Write_Buffer("Despejando água.");
+
+		while(1){
+			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+			HAL_Delay(300);
+
 		}
 
-
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		HAL_Delay(300);
 	}
 }

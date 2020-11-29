@@ -50,6 +50,8 @@ extern "C" {
 
 /* USER CODE END EM */
 
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -58,14 +60,12 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define ADC1_IN0____P1_Pin GPIO_PIN_0
-#define ADC1_IN0____P1_GPIO_Port GPIOA
-#define ADC1_IN1____T1_Pin GPIO_PIN_1
-#define ADC1_IN1____T1_GPIO_Port GPIOA
-#define ADC1_IN2____T2_Pin GPIO_PIN_2
-#define ADC1_IN2____T2_GPIO_Port GPIOA
-#define ADC1_IN4____Buttons_Pin GPIO_PIN_4
-#define ADC1_IN4____Buttons_GPIO_Port GPIOA
+#define TIM2_CH1_____R1_Pin GPIO_PIN_0
+#define TIM2_CH1_____R1_GPIO_Port GPIOA
+#define TIM2_CH2_____Y1_Pin GPIO_PIN_1
+#define TIM2_CH2_____Y1_GPIO_Port GPIOA
+#define ADC1_IN4_____T1_Pin GPIO_PIN_4
+#define ADC1_IN4_____T1_GPIO_Port GPIOA
 #define Button_Cancelar_Pin GPIO_PIN_5
 #define Button_Cancelar_GPIO_Port GPIOA
 #define Button_Decrease_Pin GPIO_PIN_6

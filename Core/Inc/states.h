@@ -13,6 +13,7 @@
 #include "utils.h"
 #include "LCD_4.h"
 #include "capsule.h"
+#include "PWM.h"
 
 //#define STATE_SHOWING_CLOCK 0
 //#define STATE_STARTING_PROCESS 1
@@ -22,6 +23,6 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock();
 
 CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule);
 
-void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule);
+void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef hadc);
 
 #endif /* INC_STATES_H_ */
