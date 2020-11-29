@@ -105,7 +105,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  uint8_t current_state = STATE_SHOWING_CLOCK;
+  STATE current_state = STATE_SHOWING_CLOCK;
   CAPSULE_Recipe_TypeDef capsule;
 
   while (1)
@@ -119,7 +119,15 @@ int main(void)
 			current_state = STATE_STARTING_PROCESS;
 			break;
 		case STATE_STARTING_PROCESS:
-			current_state = STATE_Start_Process(capsule);
+			capsule = STATE_Starting_Process(capsule);
+
+			//se confirmou e tem uma capsula inserida
+			if(capsule.capsule_type != NONE_CAPSULE_TYPE)
+			{
+				STATE_Started_Process(capsule);
+				current_state = STATE_SHOWING_CLOCK;
+			}
+			current_state = STATE_SHOWING_CLOCK;
 			break;
 		default:
 			break;

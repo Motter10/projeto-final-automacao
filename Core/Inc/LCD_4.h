@@ -32,6 +32,14 @@ void LCD_Write_Buffer(uint8_t* data);
 
 void LCD_Clear();
 
+void LCD_Shift_Left();
+
+void LCD_Shift_Right();
+
+void LCD_First_Line();
+
+void LCD_Seccond_Line();
+
 void LCD_Create_Custom_Char(uint8_t loc, uint8_t *msg);
 
 void LCD_Init_Custom_Characters();

@@ -1,2 +1,3 @@
-states.c:11:24:STATE_Show_Clock	56	static
-states.c:40:9:STATE_Start_Process	32	static
+states.c:11:24:STATE_Show_Clock	72	static
+states.c:44:24:STATE_Starting_Process	32	static
+states.c:68:6:STATE_Started_Process	16	static

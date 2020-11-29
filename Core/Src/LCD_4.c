@@ -122,6 +122,48 @@ void LCD_Clear(){
 }
 
 /**
+ * @brief desloca cursor mais a mensagem para a esquerda
+ *
+ * @retval Nenhum
+ */
+void LCD_Shift_Left()
+{
+	LCD_Write(0x18, 0);
+}
+
+/**
+ * @brief desloca cursor mais a mensagem para a direita
+ *
+ * @retval Nenhum
+ */
+void LCD_Shift_Right()
+{
+	LCD_Write(0x1c, 0);
+}
+
+/**
+ * @brief Desloca o cursor para a posição inicial da primeira linha
+ *
+ * @retval Nenhum
+ */
+void LCD_First_Line()
+{
+	LCD_Write(0x80, 0);
+}
+
+
+/**
+ * @brief Desloca o cursor para a posição inicial da segunda linha
+ *
+ * @retval Nenhum
+ */
+void LCD_Seccond_Line()
+{
+	LCD_Write(0xC0, 0);
+}
+
+
+/**
  * @brief escreve na CGRAM caracter customizado
  *
  *	escreve caracter na CGRAM a partir do endereço 0x40

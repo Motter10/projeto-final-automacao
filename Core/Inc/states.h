@@ -14,11 +14,14 @@
 #include "LCD_4.h"
 #include "capsule.h"
 
-#define STATE_SHOWING_CLOCK 0
-#define STATE_STARTING_PROCESS 1
+//#define STATE_SHOWING_CLOCK 0
+//#define STATE_STARTING_PROCESS 1
+typedef enum{STATE_SHOWING_CLOCK, STATE_STARTING_PROCESS, STATE_STARTED_PROCESS} STATE;
 
 CAPSULE_Recipe_TypeDef STATE_Show_Clock();
 
-uint8_t STATE_Start_Process(CAPSULE_Recipe_TypeDef capsule);
+CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule);
+
+void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule);
 
 #endif /* INC_STATES_H_ */

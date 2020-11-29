@@ -32,27 +32,53 @@ typedef struct
 {
 	CAPSULE_Type capsule_type;
 	WATER_Type water_type;
+	char  capsule_name[16];
 	float water_time;
 	float water_temp;
 	float co2_time;
 }CAPSULE_Recipe_TypeDef;
-#define RECIPE_SPARKLINK_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SPARKLINK_WATER, .water_type = ICE_WATER, .water_time = 0,.water_temp = 0, .co2_time = 2}
-//agua com gás
-//#define RECIPE_NONE_TYPE_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = { .capsule_type = NONE_CAPSULE_TYPE, 	\
-//	.water_type = NONE_WATER_TYPE,		\
-//	.water_time = 0.0,       			\
-//	.water_temp = 0.0,       			\
-//	.co2_time = 0.0}          			 \
 
-//agua com gás
-//#define RECIPE_SPARKLINK_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = { .capsule_type = RECIPE_SPARKLINK_WATER, .water_type = NONE_WATER_TYPE, .water_time = 3.0,	.water_temp = 15.0,	.co2_time = 1.5	}
-//chá gelado
-//#define RECIPE_ICE_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = { .capsule_type = RECIPE_ICE_TEA, 	\
-//	.water_type = NONE_WATER_TYPE,		\
-//	.water_time = 2.7,       			\
-//	.water_temp = 20.0,       			\
-//	.co2_time = 0.0         			 \
-//	}
+#define RECIPE_NONE_CAPSULE_TYPE_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = NONE_CAPSULE_TYPE, \
+		.capsule_name = "Nenhuma", \
+		.water_type = NONE_WATER_TYPE, \
+		.water_time = 0,\
+		.water_temp = 0,\
+		.co2_time = 0}
+
+#define RECIPE_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_WATER, \
+		.capsule_name = "Escolha a água", \
+		.water_type = NONE_WATER_TYPE, \
+		.water_time = 3.0,\
+		.water_temp = 0.0,\
+		.co2_time = 0.0}
+
+#define RECIPE_SPARKLINK_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SPARKLINK_WATER, \
+		.capsule_name = "Agua com gás", \
+		.water_type = ICE_WATER, \
+		.water_time = 3.0,\
+		.water_temp = 15.0,\
+		.co2_time = 1.5}
+
+#define RECIPE_ICE_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_ICE_TEA, \
+		.capsule_name = "Chá gelado", \
+		.water_type = ICE_WATER, \
+		.water_time = 2.7,\
+		.water_temp = 20.0,\
+		.co2_time = 0}
+
+#define RECIPE_HOT_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_HOT_TEA, \
+		.capsule_name = "Chá quente", \
+		.water_type = HOT_WATER, \
+		.water_time = 2.7,\
+		.water_temp = 60.0,\
+		.co2_time = 0}
+
+#define RECIPE_SODA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SODA, \
+		.capsule_name = "Refrigerante", \
+		.water_type = ICE_WATER, \
+		.water_time = 4,\
+		.water_temp = 17.0,\
+		.co2_time = 2.56}
 
 CAPSULE_Recipe_TypeDef CAPSULE_Verify_Insertion();
 
