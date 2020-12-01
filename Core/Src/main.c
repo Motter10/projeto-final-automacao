@@ -51,7 +51,7 @@ DMA_HandleTypeDef hdma_adc1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-uint32_t duty_cycle = 0;
+
 //uint8_t  adcDataReady = 0;
 //uint32_t adcData[NUMBER_OF_CONVERSTION];
 uint32_t adcAvgData = 0;
@@ -112,7 +112,6 @@ int main(void)
 
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
 
-
   // calibracao do ADC
 //  	HAL_ADCEx_Calibration_Start(&hadc1);
 
@@ -129,7 +128,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  ADC_GetValue(hadc1);
+
+//	  int32_t sensor_signal = ADC_GetValue(hadc1, 0);
 
 //	  HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSTION);
 
@@ -224,12 +224,12 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 2;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -239,6 +239,14 @@ static void MX_ADC1_Init(void)
   sConfig.Channel = ADC_CHANNEL_4;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel
+  */
+  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -305,6 +313,10 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
@@ -356,12 +368,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Button_Cancelar_Pin Button_Decrease_Pin Button_Increase_Pin Button_Confirmar_Pin */
-  GPIO_InitStruct.Pin = Button_Cancelar_Pin|Button_Decrease_Pin|Button_Increase_Pin|Button_Confirmar_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
   /*Configure GPIO pins : Display_RW_Pin Display_EN_Pin Display_D4_Pin Display_D5_Pin
                            Display_D6_Pin Display_D7_Pin Display_RS_Pin */
   GPIO_InitStruct.Pin = Display_RW_Pin|Display_EN_Pin|Display_D4_Pin|Display_D5_Pin
@@ -370,6 +376,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Button_Increase_Pin Button_Confirmar_Pin */
+  GPIO_InitStruct.Pin = Button_Increase_Pin|Button_Confirmar_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : BN1_Bit_0_Pin BN1_bit_1_Pin BN1_bit_2_Pin Inserir_Capsula_Pin */
   GPIO_InitStruct.Pin = BN1_Bit_0_Pin|BN1_bit_1_Pin|BN1_bit_2_Pin|Inserir_Capsula_Pin;

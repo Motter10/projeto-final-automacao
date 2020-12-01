@@ -74,11 +74,7 @@ void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef had
 	uint8_t confirm_button = 0;
 	while(1)
 	{
-		LCD_Clear();
-		LCD_Write_Buffer("Aquecendo água.");
-
-		//se temperatura da água for igual a desejada, aciona válvula de saida de agua quente
-		CONTROLLER_Get_IsReady(hadc, capsule.water_temp, 4);
+		CONTROLLER_Get_IsReady(hadc, capsule);
 
 		LCD_Clear();
 		LCD_Write_Buffer("Despejando água.");

@@ -1,0 +1,2 @@
+PWM.c:23:6:PWM_Increase	24	static
+PWM.c:38:6:PWM_Decrease	24	static

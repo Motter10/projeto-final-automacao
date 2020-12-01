@@ -104,10 +104,11 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**ADC1 GPIO Configuration
     PA4     ------> ADC1_IN4
+    PA5     ------> ADC1_IN5
     */
-    GPIO_InitStruct.Pin = ADC1_IN4_____T1_Pin;
+    GPIO_InitStruct.Pin = ADC1_IN4_____T1_Pin|ADC1_IN5_____T2_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-    HAL_GPIO_Init(ADC1_IN4_____T1_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* ADC1 DMA Init */
     /* ADC1 Init */
@@ -117,7 +118,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
-    hdma_adc1.Init.Mode = DMA_CIRCULAR;
+    hdma_adc1.Init.Mode = DMA_NORMAL;
     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
     {
@@ -151,8 +152,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 
     /**ADC1 GPIO Configuration
     PA4     ------> ADC1_IN4
+    PA5     ------> ADC1_IN5
     */
-    HAL_GPIO_DeInit(ADC1_IN4_____T1_GPIO_Port, ADC1_IN4_____T1_Pin);
+    HAL_GPIO_DeInit(GPIOA, ADC1_IN4_____T1_Pin|ADC1_IN5_____T2_Pin);
 
     /* ADC1 DMA DeInit */
     HAL_DMA_DeInit(hadc->DMA_Handle);
@@ -198,8 +200,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
     /**TIM2 GPIO Configuration
     PA0-WKUP     ------> TIM2_CH1
     PA1     ------> TIM2_CH2
+    PA2     ------> TIM2_CH3
     */
-    GPIO_InitStruct.Pin = TIM2_CH1_____R1_Pin|TIM2_CH2_____Y1_Pin;
+    GPIO_InitStruct.Pin = TIM2_CH1_____R1_Pin|TIM2_CH2_____CP1_Pin|TIM2_CH3_____B1_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

@@ -62,14 +62,14 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define TIM2_CH1_____R1_Pin GPIO_PIN_0
 #define TIM2_CH1_____R1_GPIO_Port GPIOA
-#define TIM2_CH2_____Y1_Pin GPIO_PIN_1
-#define TIM2_CH2_____Y1_GPIO_Port GPIOA
+#define TIM2_CH2_____CP1_Pin GPIO_PIN_1
+#define TIM2_CH2_____CP1_GPIO_Port GPIOA
+#define TIM2_CH3_____B1_Pin GPIO_PIN_2
+#define TIM2_CH3_____B1_GPIO_Port GPIOA
 #define ADC1_IN4_____T1_Pin GPIO_PIN_4
 #define ADC1_IN4_____T1_GPIO_Port GPIOA
-#define Button_Cancelar_Pin GPIO_PIN_5
-#define Button_Cancelar_GPIO_Port GPIOA
-#define Button_Decrease_Pin GPIO_PIN_6
-#define Button_Decrease_GPIO_Port GPIOA
+#define ADC1_IN5_____T2_Pin GPIO_PIN_5
+#define ADC1_IN5_____T2_GPIO_Port GPIOA
 #define Display_RW_Pin GPIO_PIN_10
 #define Display_RW_GPIO_Port GPIOB
 #define Display_EN_Pin GPIO_PIN_11

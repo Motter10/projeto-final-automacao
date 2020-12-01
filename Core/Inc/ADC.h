@@ -15,6 +15,11 @@
 #include "capsule.h"
 
 #define ADC_SCALE (3.3/4095)
-#define NUMBER_OF_CONVERSTION	1
+#define NUMBER_OF_CONVERSTION	2
+
+typedef enum{IN_5, IN_4} ADC_CHANNEL_Id;
+
+extern uint32_t adc_data[NUMBER_OF_CONVERSTION];
+extern uint8_t adc_data_ready;
 
 #endif /* INC_ADC_H_ */
