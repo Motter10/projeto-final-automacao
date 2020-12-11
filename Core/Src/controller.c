@@ -21,7 +21,6 @@ void CONTROLLER_Get_IsReady(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsu
 	switch (capsule.water_type) {
 		case HOT_WATER:
 			LCD_Write_Buffer("Aquecendo a água.");
-//			PWM_R1_DATA(R1);
 			CONTROLLER_BLOCK_HEATER_DATA(heater_block);
 			block = heater_block;
 			//aciona R1, aquecimento resistivo

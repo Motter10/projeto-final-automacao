@@ -31,6 +31,6 @@ typedef struct{
 
 #define CONTROLLER_BLOCK_HEATER_DATA(CONTROLLER_OBJ) Controler_TypeDef CONTROLLER_OBJ = {.pwm={.pwm_channel = 1, .duty_cycle = 0.1}, .adc_channel_id = IN_5, .output = {.gpio_pin = GPIO_PIN_0, .gpio_class = GPIOB}}
 
-#define CONTROLLER_BLOCK_COOLER_DATA(CONTROLLER_OBJ) Controler_TypeDef CONTROLLER_OBJ = {.pwm={.pwm_channel = 2, .duty_cycle = 0.1}, .adc_channel_id = IN_4, .output = {.gpio_pin = GPIO_PIN_1, .gpio_class = GPIOB}}
+#define CONTROLLER_BLOCK_COOLER_DATA(CONTROLLER_OBJ) Controler_TypeDef CONTROLLER_OBJ = {.pwm={.pwm_channel = 2, .duty_cycle = 0.01}, .adc_channel_id = IN_4, .output = {.gpio_pin = GPIO_PIN_1, .gpio_class = GPIOB}}
 
 #endif /* INC_CONTROLLER_H_ */
