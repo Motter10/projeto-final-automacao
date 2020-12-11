@@ -110,7 +110,7 @@ int main(void)
   LCD_Init();
   ADC_Init(hadc1);
 
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  PWM_Init(&htim2);
 
   // calibracao do ADC
 //  	HAL_ADCEx_Calibration_Start(&hadc1);
@@ -129,13 +129,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-//	  int32_t sensor_signal = ADC_GetValue(hadc1, 0);
-
-//	  HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSTION);
-
-
-
-	switch (current_state) {
+		switch (current_state) {
 		case STATE_SHOWING_CLOCK:
 			capsule = STATE_Show_Clock();
 			current_state = STATE_STARTING_PROCESS;
@@ -358,8 +352,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Display_RW_Pin|Display_EN_Pin|Display_D4_Pin|Display_D5_Pin
-                          |Display_D6_Pin|Display_D7_Pin|Display_RS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, Y1_Pin|Y2_Pin|Display_RW_Pin|Display_EN_Pin
+                          |Display_D4_Pin|Display_D5_Pin|Display_D6_Pin|Display_D7_Pin
+                          |Display_RS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -368,10 +363,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Display_RW_Pin Display_EN_Pin Display_D4_Pin Display_D5_Pin
-                           Display_D6_Pin Display_D7_Pin Display_RS_Pin */
-  GPIO_InitStruct.Pin = Display_RW_Pin|Display_EN_Pin|Display_D4_Pin|Display_D5_Pin
-                          |Display_D6_Pin|Display_D7_Pin|Display_RS_Pin;
+  /*Configure GPIO pins : Y1_Pin Y2_Pin Display_RW_Pin Display_EN_Pin
+                           Display_D4_Pin Display_D5_Pin Display_D6_Pin Display_D7_Pin
+                           Display_RS_Pin */
+  GPIO_InitStruct.Pin = Y1_Pin|Y2_Pin|Display_RW_Pin|Display_EN_Pin
+                          |Display_D4_Pin|Display_D5_Pin|Display_D6_Pin|Display_D7_Pin
+                          |Display_RS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

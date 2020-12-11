@@ -22,13 +22,7 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 		LCD_Clear();
 		LCD_Write_Buffer(hour);
 
-		insert_button = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_INSERT_BUTTON);
-
-		//se botão de inserir capsula for pressionado, verifica  qual é a receita
-		if(insert_button)
-		{
-			capsule = CAPSULE_Verify_Insertion();
-		}
+		capsule = CAPSULE_Verify_Insertion();
 
 		//se tiver uma cápsula, retorna
 		if(capsule.capsule_type != NONE_CAPSULE_TYPE ){
@@ -76,14 +70,7 @@ void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef had
 	{
 		CONTROLLER_Get_IsReady(hadc, capsule);
 
-		LCD_Clear();
-		LCD_Write_Buffer("Despejando água.");
-
-		while(1){
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-			HAL_Delay(300);
-
-		}
+		return;
 
 	}
 }

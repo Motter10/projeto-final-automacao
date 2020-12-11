@@ -33,9 +33,9 @@ typedef struct
 	CAPSULE_Type capsule_type;
 	WATER_Type water_type;
 	char  capsule_name[16];
-	float water_time;
+	uint32_t water_time;
 	uint32_t water_temp;
-	float co2_time;
+	uint32_t co2_time;
 }CAPSULE_Recipe_TypeDef;
 
 #define RECIPE_NONE_CAPSULE_TYPE_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = NONE_CAPSULE_TYPE, \
@@ -48,37 +48,37 @@ typedef struct
 #define RECIPE_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_WATER, \
 		.capsule_name = "Escolha a água", \
 		.water_type = NONE_WATER_TYPE, \
-		.water_time = 3.0,\
+		.water_time = 3000,\
 		.water_temp = 0,\
-		.co2_time = 0.0}
+		.co2_time = 0}
 
 #define RECIPE_SPARKLINK_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SPARKLINK_WATER, \
 		.capsule_name = "Agua com gás", \
 		.water_type = ICE_WATER, \
-		.water_time = 3.0,\
+		.water_time = 3000,\
 		.water_temp = 15,\
-		.co2_time = 1.5}
+		.co2_time = 1500}
 
 #define RECIPE_ICE_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_ICE_TEA, \
 		.capsule_name = "Chá gelado", \
 		.water_type = ICE_WATER, \
-		.water_time = 2.7,\
+		.water_time = 2700,\
 		.water_temp = 20,\
 		.co2_time = 0}
 
 #define RECIPE_HOT_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_HOT_TEA, \
 		.capsule_name = "Chá quente", \
 		.water_type = HOT_WATER, \
-		.water_time = 2.7,\
+		.water_time = 2700,\
 		.water_temp = 60,\
 		.co2_time = 0}
 
 #define RECIPE_SODA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SODA, \
 		.capsule_name = "Refrigerante", \
 		.water_type = ICE_WATER, \
-		.water_time = 4,\
+		.water_time = 4000,\
 		.water_temp = 17,\
-		.co2_time = 2.56}
+		.co2_time = 2560}
 
 CAPSULE_Recipe_TypeDef CAPSULE_Verify_Insertion();
 

@@ -70,6 +70,10 @@ void Error_Handler(void);
 #define ADC1_IN4_____T1_GPIO_Port GPIOA
 #define ADC1_IN5_____T2_Pin GPIO_PIN_5
 #define ADC1_IN5_____T2_GPIO_Port GPIOA
+#define Y1_Pin GPIO_PIN_0
+#define Y1_GPIO_Port GPIOB
+#define Y2_Pin GPIO_PIN_1
+#define Y2_GPIO_Port GPIOB
 #define Display_RW_Pin GPIO_PIN_10
 #define Display_RW_GPIO_Port GPIOB
 #define Display_EN_Pin GPIO_PIN_11
