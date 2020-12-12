@@ -46,7 +46,7 @@ typedef struct
 		.co2_time = 0}
 
 #define RECIPE_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_WATER, \
-		.capsule_name = "Escolha a água", \
+		.capsule_name = "Agua", \
 		.water_type = NONE_WATER_TYPE, \
 		.water_time = 3000,\
 		.water_temp = 0,\

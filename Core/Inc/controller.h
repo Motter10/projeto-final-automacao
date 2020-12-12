@@ -15,12 +15,8 @@
 #include "capsule.h"
 #include "ADC.h"
 #include "PWM.h"
+#include "outputs.h"
 
-
-typedef struct{
-	uint32_t gpio_pin;
-    uint32_t gpio_class;
-}Output_TypeDef;
 
 typedef struct{
 	PWM_TypeDef pwm;

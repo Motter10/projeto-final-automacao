@@ -11,6 +11,7 @@ void PWM_Init(TIM_HandleTypeDef* htim2)
 {
 	HAL_TIM_PWM_Start(htim2, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(htim2, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(htim2, TIM_CHANNEL_3);
 }
 
 void PWM_Increase(PWM_TypeDef pwm_data)
@@ -28,6 +29,10 @@ void PWM_Increase(PWM_TypeDef pwm_data)
 		else if(pwm_data.pwm_channel == 2)
 		{
 			TIM2->CCR2 = duty_value;
+		}
+		else if(pwm_data.pwm_channel == 3)
+		{
+			TIM2->CCR3 = duty_value;
 		}
 		duty_value += 1;
 		HAL_Delay(1);
@@ -48,6 +53,10 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 		else if(pwm_data.pwm_channel == 2)
 		{
 			TIM2->CCR2 = duty_value;
+		}
+		else if(pwm_data.pwm_channel == 3)
+		{
+			TIM2->CCR3 = duty_value;
 		}
 		duty_value -= 1;
 		HAL_Delay(1);

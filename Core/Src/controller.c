@@ -53,15 +53,45 @@ void CONTROLLER_Get_IsReady(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsu
 
 	PWM_Decrease(block.pwm);
 	LCD_Clear();
-	LCD_Write_Buffer("Despejando água.");
+	LCD_Write_Buffer("Ativando bomba...");
+
+	PWM_TypeDef b1 = {.duty_cycle = 0.1, .pwm_channel = 3};
+	PWM_Increase(b1);
+
+	LCD_Clear();
+	LCD_Write_Buffer("-Despejando água");
+
 
 	uint32_t init_time = HAL_GetTick();
 	uint32_t current_time = init_time;
 
-	HAL_GPIO_WritePin(block.output.gpio_class, block.output.gpio_pin, GPIO_PIN_SET);
-	while(current_time < (init_time + capsule.water_time)){
-		current_time = HAL_GetTick();
+	//se precisar de CO2
+	Y4(co2_output);
+	if(capsule.co2_time > 0){
+		LCD_Seccond_Line();
+		LCD_Write_Buffer("-Despejando CO2");
+		HAL_GPIO_WritePin(co2_output.gpio_class, co2_output.gpio_pin, GPIO_PIN_SET);
 	}
-	HAL_GPIO_WritePin(block.output.gpio_class, block.output.gpio_pin, GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(block.output.gpio_class, block.output.gpio_pin, GPIO_PIN_SET);
+
+	//recebe qual tem o tempo de despejo maior;
+//	uint32_t major_time = (capsule.water_time > capsule.co2_time) ? capsule.water_time : capsule.co2_time;
+
+	//aguarda até passar o tempo de despejo de água e de CO2.
+	while(current_time < (init_time + capsule.water_time) || current_time < (init_time + capsule.co2_time)){
+		current_time = HAL_GetTick();
+
+		//se chegou no tempo desejado de água, desliga.
+		if(current_time >=  (init_time + capsule.water_time)){
+			HAL_GPIO_WritePin(block.output.gpio_class, block.output.gpio_pin, GPIO_PIN_RESET);
+		}
+
+		//se chegou no tempo desejado de co2, desliga.
+		if(current_time >= (init_time + capsule.co2_time)){
+			HAL_GPIO_WritePin(co2_output.gpio_class, co2_output.gpio_pin, GPIO_PIN_RESET);
+		}
+	}
+	PWM_Decrease(b1);
 	return;
 }

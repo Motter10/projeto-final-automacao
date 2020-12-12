@@ -370,7 +370,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, Y1_Pin|Y2_Pin|Display_RW_Pin|Display_EN_Pin
                           |Display_D4_Pin|Display_D5_Pin|Display_D6_Pin|Display_D7_Pin
-                          |Display_RS_Pin, GPIO_PIN_RESET);
+                          |Y3_Pin|Y4_Pin|Display_RS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -381,10 +381,10 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : Y1_Pin Y2_Pin Display_RW_Pin Display_EN_Pin
                            Display_D4_Pin Display_D5_Pin Display_D6_Pin Display_D7_Pin
-                           Display_RS_Pin */
+                           Y3_Pin Y4_Pin Display_RS_Pin */
   GPIO_InitStruct.Pin = Y1_Pin|Y2_Pin|Display_RW_Pin|Display_EN_Pin
                           |Display_D4_Pin|Display_D5_Pin|Display_D6_Pin|Display_D7_Pin
-                          |Display_RS_Pin;
+                          |Y3_Pin|Y4_Pin|Display_RS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

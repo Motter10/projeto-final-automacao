@@ -100,6 +100,10 @@ void Error_Handler(void);
 #define BN1_bit_1_GPIO_Port GPIOB
 #define BN1_bit_2_Pin GPIO_PIN_5
 #define BN1_bit_2_GPIO_Port GPIOB
+#define Y3_Pin GPIO_PIN_6
+#define Y3_GPIO_Port GPIOB
+#define Y4_Pin GPIO_PIN_7
+#define Y4_GPIO_Port GPIOB
 #define Inserir_Capsula_Pin GPIO_PIN_8
 #define Inserir_Capsula_GPIO_Port GPIOB
 #define Display_RS_Pin GPIO_PIN_9

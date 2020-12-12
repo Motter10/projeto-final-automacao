@@ -25,6 +25,6 @@ typedef struct
 
 //#define PWM_CP1_DATA(PWM_OBJ) PWM_Data_TypeDef PWM_OBJ = {.pwm_channel = 2, .duty_cycle = 0.01}
 //
-//#define PWM_B1_DATA(PWM_OBJ) PWM_Data_TypeDef PWM_OBJ = {.pwm_channel = 3, .duty_cycle = 0.01}
+//#define PWM_B1_DATA(PWM_OBJ) PWM_Data_TypeDef PWM_OBJ = {.pwm_channel = 3, .duty_cycle = 0.1}
 
 #endif /* INC_PWM_H_ */

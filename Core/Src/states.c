@@ -48,6 +48,11 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 	LCD_Clear();
 	LCD_Write_Buffer(capsule.capsule_name);
 	LCD_Seccond_Line();
+
+//	//se for apenas água, escolhe entre quente, natural e gelada.
+//	if(capsule.capsule_type == RECIPE_WATER)
+
+
 	LCD_Write_Buffer("S --> Iniciar.");
 
 	int32_t sensor_signal = 0;
