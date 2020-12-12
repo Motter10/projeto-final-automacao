@@ -3,6 +3,7 @@
 "Core/Src/PWM.o"
 "Core/Src/capsule.o"
 "Core/Src/controller.o"
+"Core/Src/io.o"
 "Core/Src/main.o"
 "Core/Src/states.o"
 "Core/Src/stm32f1xx_hal_msp.o"

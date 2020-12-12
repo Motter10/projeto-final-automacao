@@ -8,6 +8,7 @@
 #ifndef INC_CONTROLLER_H_
 #define INC_CONTROLLER_H_
 
+#include <io.h>
 #include "stm32f1xx_hal.h"
 
 #include "utils.h"
@@ -15,7 +16,6 @@
 #include "capsule.h"
 #include "ADC.h"
 #include "PWM.h"
-#include "outputs.h"
 
 
 typedef struct{

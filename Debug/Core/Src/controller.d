@@ -1,5 +1,5 @@
 Core/Src/controller.o: ../Core/Src/controller.c ../Core/Inc/controller.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+ ../Core/Inc/io.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -27,10 +27,11 @@ Core/Src/controller.o: ../Core/Src/controller.c ../Core/Inc/controller.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/utils.h ../Core/Inc/LCD_4.h ../Core/Inc/capsule.h \
  ../Core/Inc/ADC.h ../Core/Inc/PWM.h \
- ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
- ../Core/Inc/outputs.h
+ ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 
 ../Core/Inc/controller.h:
+
+../Core/Inc/io.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
@@ -95,5 +96,3 @@ Core/Src/controller.o: ../Core/Src/controller.c ../Core/Inc/controller.h \
 ../Core/Inc/PWM.h:
 
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
-
-../Core/Inc/outputs.h:

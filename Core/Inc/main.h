@@ -90,9 +90,13 @@ void Error_Handler(void);
 #define Display_D6_GPIO_Port GPIOB
 #define Display_D7_Pin GPIO_PIN_15
 #define Display_D7_GPIO_Port GPIOB
-#define Button_Increase_Pin GPIO_PIN_11
+#define Button_Decrease_Pin GPIO_PIN_8
+#define Button_Decrease_GPIO_Port GPIOA
+#define Button_Increase_Pin GPIO_PIN_9
 #define Button_Increase_GPIO_Port GPIOA
-#define Button_Confirmar_Pin GPIO_PIN_12
+#define Button_Cancelar_Pin GPIO_PIN_10
+#define Button_Cancelar_GPIO_Port GPIOA
+#define Button_Confirmar_Pin GPIO_PIN_11
 #define Button_Confirmar_GPIO_Port GPIOA
 #define BN1_Bit_0_Pin GPIO_PIN_3
 #define BN1_Bit_0_GPIO_Port GPIOB

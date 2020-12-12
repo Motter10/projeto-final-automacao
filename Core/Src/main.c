@@ -129,7 +129,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-		switch (current_state) {
+	switch (current_state) {
 		case STATE_SHOWING_CLOCK:
 			capsule = STATE_Show_Clock();
 			current_state = STATE_STARTING_PROCESS;
@@ -390,8 +390,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Button_Increase_Pin Button_Confirmar_Pin */
-  GPIO_InitStruct.Pin = Button_Increase_Pin|Button_Confirmar_Pin;
+  /*Configure GPIO pins : Button_Decrease_Pin Button_Increase_Pin Button_Cancelar_Pin Button_Confirmar_Pin */
+  GPIO_InitStruct.Pin = Button_Decrease_Pin|Button_Increase_Pin|Button_Cancelar_Pin|Button_Confirmar_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

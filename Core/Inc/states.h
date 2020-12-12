@@ -15,6 +15,8 @@
 #include "capsule.h"
 #include "PWM.h"
 
+#define CHOICES_NUMBER 3
+
 //#define STATE_SHOWING_CLOCK 0
 //#define STATE_STARTING_PROCESS 1
 typedef enum{STATE_SHOWING_CLOCK, STATE_STARTING_PROCESS, STATE_STARTED_PROCESS} STATE;

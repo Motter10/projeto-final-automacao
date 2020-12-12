@@ -9,6 +9,7 @@ C_SRCS += \
 ../Core/Src/PWM.c \
 ../Core/Src/capsule.c \
 ../Core/Src/controller.c \
+../Core/Src/io.c \
 ../Core/Src/main.c \
 ../Core/Src/states.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
@@ -24,6 +25,7 @@ OBJS += \
 ./Core/Src/PWM.o \
 ./Core/Src/capsule.o \
 ./Core/Src/controller.o \
+./Core/Src/io.o \
 ./Core/Src/main.o \
 ./Core/Src/states.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
@@ -39,6 +41,7 @@ C_DEPS += \
 ./Core/Src/PWM.d \
 ./Core/Src/capsule.d \
 ./Core/Src/controller.d \
+./Core/Src/io.d \
 ./Core/Src/main.d \
 ./Core/Src/states.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
@@ -60,6 +63,8 @@ Core/Src/capsule.o: ../Core/Src/capsule.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/capsule.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/controller.o: ../Core/Src/controller.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/controller.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Core/Src/io.o: ../Core/Src/io.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/io.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/main.o: ../Core/Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/states.o: ../Core/Src/states.c

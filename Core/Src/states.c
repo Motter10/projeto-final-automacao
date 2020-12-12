@@ -22,7 +22,8 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 		LCD_Clear();
 		LCD_Write_Buffer(hour);
 
-		insert_button = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_INSERT_BUTTON);
+		BUTTON_CONFIRMAR(confirm_button);
+		insert_button = HAL_GPIO_ReadPin(confirm_button.gpio_class, confirm_button.gpio_pin);
 
 		//se botão de inserir capsula for pressionado, verifica  qual é a receita
 		if(insert_button)
@@ -49,10 +50,53 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 	LCD_Write_Buffer(capsule.capsule_name);
 	LCD_Seccond_Line();
 
-//	//se for apenas água, escolhe entre quente, natural e gelada.
-//	if(capsule.capsule_type == RECIPE_WATER)
+	GPIO_PinState pin_state;
+
+	//se for apenas água, escolhe entre quente, natural e gelada.
+	if(capsule.capsule_type == RECIPE_WATER)
+	{
+		//vetor para mostrar no display
+		char choices[CHOICES_NUMBER][16] = {"Natural", "Gelada", "Quente"};
+		//vetor para obter qual informação foi escolhida
+		WATER_Type choices_values[CHOICES_NUMBER] = {NATURAL_WATER, ICE_WATER, HOT_WATER};
+
+		//vetor para obter qual temparatura foi escolhida, perguntar para Professor
+		uint32_t choices_values_temp[CHOICES_NUMBER] = {0, 20, 60};
 
 
+		uint8_t choice_index = 0;
+		while(1){
+
+			LCD_Clear();
+			LCD_Write_Buffer(choices[choice_index]);
+
+			Pressed_Type pressed_type = Get_Button_Pressed();
+			switch (pressed_type) {
+				case CONFIRM_PRESSED:
+					capsule.water_type = choices_values[choice_index];
+					capsule.water_temp = choices_values_temp[choice_index];
+					goto choiced;
+					break;
+				case CANCEL_PRESSED:
+					capsule.capsule_type = NONE_CAPSULE_TYPE;
+					goto choiced;
+					break;
+				case INCREASE_PRESSED:
+					choice_index = (choice_index < CHOICES_NUMBER - 1) ? choice_index + 1 : 0;
+					break;
+				case DECREASE_PRESSED:
+					choice_index = (choice_index > 0) ? choice_index - 1 : CHOICES_NUMBER - 1;
+					break;
+				default:
+					break;
+			}
+
+		}
+		choiced: ;
+	}
+
+
+	LCD_Clear();
 	LCD_Write_Buffer("S --> Iniciar.");
 
 	int32_t sensor_signal = 0;
@@ -95,13 +139,11 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 		}
 	}
 
-
 	while(1)
 	{
 
-		confirm_button = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_INSERT_BUTTON);
-
-		if(confirm_button)
+		Pressed_Type pressed_type = Get_Button_Pressed();
+		if(pressed_type == CONFIRM_PRESSED)
 		{
 			return capsule;
 		}
