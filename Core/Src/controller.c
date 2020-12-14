@@ -7,13 +7,26 @@
 
 #include "controller.h"
 
-void CONTROLLER_Get_IsReady(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
+/**
+ * @brief Executa controlador
+ *
+ *	Executa o controlador conforme a capsula recebida por parâmetro, quando o erro chegar a zero,
+ *	ativa a válvula de água e a bomba principal.
+ *
+ * @retval none
+ * @param hadc objeto do ADC_1
+ * @param capsule capsula que determina se precisará aquecer ou resfriar a água.
+ *
+ */
+void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 {
 	int32_t sensor_signal = 0;
 	uint32_t sensor_temp = 0;
 	int32_t error_signal = 1;
 	uint32_t ref_sinal = capsule.water_temp;
 	ADC_CHANNEL_Id sensor_channel_id;
+	uint32_t init_time = 0;
+	uint32_t current_time = 0;
 
 	Controler_TypeDef block;
 	LCD_Clear();
@@ -39,6 +52,8 @@ void CONTROLLER_Get_IsReady(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsu
 			break;
 	}
 
+	init_time = HAL_GetTick();
+	current_time = init_time;
 	//fica no while até chegar na temperatura desejada
 	while(error_signal != 0)
 	{
@@ -49,21 +64,26 @@ void CONTROLLER_Get_IsReady(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsu
 		error_signal = ref_sinal - sensor_temp;
 
 		HAL_Delay(50);
+		current_time = HAL_GetTick();
+		if(current_time > (init_time + 300)){
+			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+			init_time = current_time;
+		}
 	}
 
 	PWM_Decrease(block.pwm);
 	LCD_Clear();
 	LCD_Write_Buffer("Ativando bomba...");
 
-	PWM_TypeDef b1 = {.duty_cycle = 0.1, .pwm_channel = 3};
+	PWM_TypeDef b1 = {.duty_cycle = 1, .pwm_channel = 3};
 	PWM_Increase(b1);
 
 	LCD_Clear();
 	LCD_Write_Buffer("-Despejando água");
 
 
-	uint32_t init_time = HAL_GetTick();
-	uint32_t current_time = init_time;
+	init_time = HAL_GetTick();
+	current_time = init_time;
 
 	//se precisar de CO2
 	Y4(co2_output);

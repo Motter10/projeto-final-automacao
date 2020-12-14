@@ -7,6 +7,14 @@
 
 #include "io.h"
 
+/**
+ * @brief Aguarda entrada do usuário
+ *
+ *	Retorna apenas após o usuário pressionar algum botão
+ *
+ * @retval Pressed_Type Tipo do botão pressionado
+ *
+ */
 Pressed_Type Get_Button_Pressed()
 {
 	BUTTON_CONFIRMAR(confirm_button);

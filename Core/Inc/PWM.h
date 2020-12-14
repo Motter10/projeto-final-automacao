@@ -21,10 +21,14 @@ typedef struct
 	float duty_cycle;
 }PWM_TypeDef;
 
-#define PWM_R1_DATA(PWM_OBJ) PWM_TypeDef PWM_OBJ = {.pwm_channel = 1, .duty_cycle = 0.1}
+#define PWM_R1_DATA(PWM_OBJ) PWM_TypeDef PWM_OBJ = {.pwm_channel = 1, .duty_cycle = 1}
 
-//#define PWM_CP1_DATA(PWM_OBJ) PWM_Data_TypeDef PWM_OBJ = {.pwm_channel = 2, .duty_cycle = 0.01}
-//
-//#define PWM_B1_DATA(PWM_OBJ) PWM_Data_TypeDef PWM_OBJ = {.pwm_channel = 3, .duty_cycle = 0.1}
+void PWM_Init(TIM_HandleTypeDef* htim2);
+
+void PWM_Increase(PWM_TypeDef pwm_data);
+
+void PWM_Decrease(PWM_TypeDef pwm_data);
+
+
 
 #endif /* INC_PWM_H_ */

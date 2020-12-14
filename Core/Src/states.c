@@ -8,6 +8,14 @@
 #include "controller.h"
 #include "states.h"
 
+/**
+ * @brief Estado Inicial, mostrando relógio
+ *
+ *	Fica mostrando relógio no display, após capsula ser inserida retorna a mesma.
+ *
+ * @retval CAPSULE_Recipe_TypeDef capsula inserida
+ *
+ */
 CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 {
 	char hour[10];
@@ -42,6 +50,15 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 }
 
 
+/**
+ * @brief Iniciando processo
+ *
+ * Aguarda entradas do usuário, para inicar ou cancelar o processo.
+ *
+ * @retval CAPSULE_Recipe_TypeDef receita da capsula inserida, se cancelar usuário cancelar inicio, retorna vazia
+ * @param capsule capsula que foi inserida
+ * @param hadc objeto do ADC_1
+ */
 CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef hadc)
 {
 	uint8_t confirm_button = 0;
@@ -98,6 +115,8 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 
 	LCD_Clear();
 	LCD_Write_Buffer("S --> Iniciar.");
+	LCD_Seccond_Line();
+	LCD_Write_Buffer("C --> Cancelar.");
 
 	int32_t sensor_signal = 0;
 	float avg_value_P1 = 0;
@@ -147,12 +166,26 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 		{
 			return capsule;
 		}
+		if(pressed_type == CANCEL_PRESSED)
+		{
+			capsule.capsule_type = NONE_CAPSULE_TYPE;
+			return capsule;
+		}
 
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 		HAL_Delay(300);
 	}
 }
 
+/**
+ * @brief Precesso iniciado
+ *
+ * Aguarda controlador e despeja água na capsula inserida;
+ *
+ * @retval CAPSULE_Recipe_TypeDef receita da capsula inserida, se cancelar usuário cancelar inicio, retorna vazia
+ * @param capsule capsula que foi inserida
+ * @param hadc objeto do ADC_1
+ */
 void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef hadc)
 {
 	LCD_Clear();
@@ -162,7 +195,7 @@ void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef had
 	uint8_t confirm_button = 0;
 	while(1)
 	{
-		CONTROLLER_Get_IsReady(hadc, capsule);
+		CONTROLLER_Execute(hadc, capsule);
 
 		return;
 

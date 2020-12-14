@@ -20,6 +20,11 @@
 #define EN GPIO_PIN_11
 
 #define DATA_PINS GPIOB
+
+/*
+ * Os pinos do LCD devem ser ligados em uma sequência crescente, o primeiro pino é definido por FRST_PIN
+ *
+ */
 #define FRST_PIN GPIO_PIN_12
 
 void LCD_Send();

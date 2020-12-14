@@ -7,6 +7,14 @@
 #include "utils.h"
 #include "ADC.h"
 
+/**
+ * @brief Converte valor lido no adc para temperatura
+ *
+ * time_t now = time (0);
+ * Na lihna acima, deve-se passar por parâmetro na função time() o valor do tempo atual;
+ *
+ * @param [out]hour vetor de char que será armazenado a hora
+ */
 void UTILS_get_Hour(char* hour)
 {
 	  struct tm *sTm;
@@ -18,13 +26,16 @@ void UTILS_get_Hour(char* hour)
 	  return;
 }
 
+/**
+ * @brief Converte valor lido no adc para temperatura
+ *
+ * Atualmente é apenas um valor fictício para ilustrar o funcionamento do sistema.
+ *
+ * @retval uint32_t temperatura
+ * @param value_adc valor lido em um canal do adc
+ */
 uint32_t UTILS_To_Temp(uint32_t value_adc)
 {
-	//
-//	float v25 = 4000;// When V25=1.41V at ref 3V3
-//	float avgSlope = 5.0;// When avgSlope=5mV/C at ref 3V3
-//	float temperature = ((value_adc - v25)/avgSlope)+25;
-//	return (uint32_t)temperature;
 	uint32_t temperature = (value_adc * ADC_SCALE) * 25;
 	return temperature;
 }

@@ -26,4 +26,10 @@ typedef enum{IN7 = 3, IN6 = 0, IN_5 = 1, IN_4 = 2} ADC_CHANNEL_Id;
 extern uint32_t adc_data[NUMBER_OF_CONVERSTION];
 extern uint8_t adc_data_ready;
 
+void ADC_Init(ADC_HandleTypeDef hadc1);
+
+uint32_t ADC_GetValue(ADC_HandleTypeDef hadc1, ADC_CHANNEL_Id channel_id);
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
+
 #endif /* INC_ADC_H_ */

@@ -7,6 +7,16 @@
 
 #include "capsule.h"
 
+/**
+ * @brief Verifica qual capsula foi inserida
+ *
+ *	Verifica se alguma capsula foi inserida e retorna a mesma.
+ *	A capsula é verificada conforme os 3 bits formados por
+ *	CAPSULE_BN1_BIT_0 - CAPSULE_BN1_BIT_1 - CAPSULE_BN1_BIT_2
+ *
+ * @retval CAPSULE_Recipe_TypeDef
+ *
+ */
 CAPSULE_Recipe_TypeDef CAPSULE_Verify_Insertion()
 {
 	uint8_t bit_0 = HAL_GPIO_ReadPin(CAPSULE_BN1_PORT, CAPSULE_BN1_BIT_0);

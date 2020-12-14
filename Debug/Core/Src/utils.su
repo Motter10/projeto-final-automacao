@@ -1,2 +1,2 @@
-utils.c:10:6:UTILS_get_Hour	40	static
-utils.c:21:10:UTILS_To_Temp	32	static
+utils.c:18:6:UTILS_get_Hour	40	static
+utils.c:37:10:UTILS_To_Temp	32	static
