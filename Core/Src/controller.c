@@ -31,6 +31,7 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 	Controler_TypeDef block;
 	LCD_Clear();
 
+	Y3(natural_water_output);
 	switch (capsule.water_type) {
 		case HOT_WATER:
 			LCD_Write_Buffer("Aquecendo a água.");
@@ -47,6 +48,10 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 			//aciona CP1, compressor de refrigeração
 			PWM_Increase(block.pwm);
 			sensor_channel_id = cooler_block.adc_channel_id;
+			break;
+		case NATURAL_WATER:
+			block.output = natural_water_output;
+			goto activate_pump;
 			break;
 		default:
 			break;
@@ -72,20 +77,23 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 	}
 
 	PWM_Decrease(block.pwm);
+
+	activate_pump: ;
+
 	LCD_Clear();
 	LCD_Write_Buffer("Ativando bomba...");
 
+	//ativa bomba de saída
 	PWM_TypeDef b1 = {.duty_cycle = 1, .pwm_channel = 3};
 	PWM_Increase(b1);
 
 	LCD_Clear();
 	LCD_Write_Buffer("-Despejando água");
 
-
 	init_time = HAL_GetTick();
 	current_time = init_time;
 
-	//se precisar de CO2
+	//se precisar de CO2, ativa CO2
 	Y4(co2_output);
 	if(capsule.co2_time > 0){
 		LCD_Seccond_Line();
@@ -94,9 +102,6 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 	}
 
 	HAL_GPIO_WritePin(block.output.gpio_class, block.output.gpio_pin, GPIO_PIN_SET);
-
-	//recebe qual tem o tempo de despejo maior;
-//	uint32_t major_time = (capsule.water_time > capsule.co2_time) ? capsule.water_time : capsule.co2_time;
 
 	//aguarda até passar o tempo de despejo de água e de CO2.
 	while(current_time < (init_time + capsule.water_time) || current_time < (init_time + capsule.co2_time)){
