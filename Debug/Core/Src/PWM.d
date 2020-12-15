@@ -25,7 +25,8 @@ Core/Src/PWM.o: ../Core/Src/PWM.c ../Core/Inc/PWM.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
+ ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
+ ../Core/Inc/DWT.h
 
 ../Core/Inc/PWM.h:
 
@@ -82,3 +83,5 @@ Core/Src/PWM.o: ../Core/Src/PWM.c ../Core/Inc/PWM.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
+
+../Core/Inc/DWT.h:

@@ -14,6 +14,7 @@
 #include "LCD_4.h"
 #include "capsule.h"
 #include "PWM.h"
+#include "DWT.h"
 
 #define CHOICES_NUMBER 3
 

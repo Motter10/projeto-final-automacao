@@ -84,7 +84,7 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 	LCD_Write_Buffer("Ativando bomba...");
 
 	//ativa bomba de saída
-	PWM_TypeDef b1 = {.duty_cycle = 1, .pwm_channel = 3};
+	PWM_TypeDef b1 = {.duty_cycle = 1, .pwm_channel = 3, .speed_time=200};
 	PWM_Increase(b1);
 
 	LCD_Clear();
@@ -117,6 +117,9 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 			HAL_GPIO_WritePin(co2_output.gpio_class, co2_output.gpio_pin, GPIO_PIN_RESET);
 		}
 	}
+
+	//seta tempo para desacelerar
+	b1.speed_time = 250;
 	PWM_Decrease(b1);
 	return;
 }

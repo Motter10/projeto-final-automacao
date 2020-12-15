@@ -44,7 +44,7 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 
 			return capsule;
 		}
-		HAL_Delay(300);
+		DWT_Delay_us(300000);
 		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 	}
 }

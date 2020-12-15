@@ -1,3 +1,3 @@
 PWM.c:21:6:PWM_Init	16	static
-PWM.c:36:6:PWM_Increase	56	static
-PWM.c:85:6:PWM_Decrease	32	static
+PWM.c:36:6:PWM_Increase	64	static
+PWM.c:87:6:PWM_Decrease	56	static

@@ -42,7 +42,9 @@ void PWM_Increase(PWM_TypeDef pwm_data)
 	uint32_t init_time = HAL_GetTick();
 	uint32_t current_time = init_time;
 
-	uint32_t inc = duty_value_max / 200.0;
+	//pega qual o delau necessário para atingir o tempo de subida necessário;
+	//multiplica por mil para transformar em microssegundos
+	uint32_t delay = ((float)pwm_data.speed_time / duty_value_max) * 1000;
 
 	uint32_t first_time = HAL_GetTick();
 	while(duty_value < duty_value_max)
@@ -60,8 +62,8 @@ void PWM_Increase(PWM_TypeDef pwm_data)
 		{
 			TIM2->CCR3 = duty_value;
 		}
-		duty_value += inc;
-		HAL_Delay(1);
+		duty_value += 1;
+		DWT_Delay_us(delay);
 
 		//pisca led
 		current_time = HAL_GetTick();
@@ -89,6 +91,11 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 	uint32_t init_time = HAL_GetTick();
 	uint32_t current_time = init_time;
 
+	//pega qual o delau necessário para atingir o tempo de descida necessário;
+	//multiplica por mil para transformar em microssegundos
+	uint32_t delay = ((float)pwm_data.speed_time / duty_value_max) * 1000;
+
+	uint32_t first_time = HAL_GetTick();
 	while(duty_value_max > 0)
 	{
 		if(pwm_data.pwm_channel == 1)
@@ -104,7 +111,7 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 			TIM2->CCR3 = duty_value_max;
 		}
 		duty_value_max -= 1;
-		HAL_Delay(1);
+		DWT_Delay_us(delay);
 
 		//pisca led
 		current_time = HAL_GetTick();
@@ -113,4 +120,6 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 			init_time = current_time;
 		}
 	}
+	uint32_t last_time = HAL_GetTick();
+	return;
 }

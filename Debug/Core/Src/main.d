@@ -28,7 +28,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/LCD_4.h ../Core/Inc/states.h ../Core/Inc/utils.h \
  ../Core/Inc/LCD_4.h ../Core/Inc/capsule.h ../Core/Inc/PWM.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
- ../Core/Inc/PWM.h ../Core/Inc/ADC.h
+ ../Core/Inc/DWT.h ../Core/Inc/PWM.h ../Core/Inc/ADC.h ../Core/Inc/DWT.h
 
 ../Core/Inc/main.h:
 
@@ -98,6 +98,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
 
+../Core/Inc/DWT.h:
+
 ../Core/Inc/PWM.h:
 
 ../Core/Inc/ADC.h:
+
+../Core/Inc/DWT.h:

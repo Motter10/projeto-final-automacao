@@ -26,6 +26,7 @@
 #include "states.h"
 #include "PWM.h"
 #include "ADC.h"
+#include "DWT.h"
 
 /* USER CODE END Includes */
 
@@ -71,11 +72,7 @@ static void MX_TIM1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void delay_us (uint32_t us)
-{
-	__HAL_TIM_SET_COUNTER(&htim1,0);  // set the counter value a 0
-	while (__HAL_TIM_GET_COUNTER(&htim1) < us);  // wait for the counter to reach the us input in the parameter
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -116,9 +113,8 @@ int main(void)
   //inicializa LCD em modo 4 bits
   LCD_Init();
   ADC_Init(hadc1);
-  HAL_TIM_Base_Start(&htim1);
   PWM_Init(&htim2);
-
+  DWT_Delay_Init();
   // calibracao do ADC
 //  	HAL_ADCEx_Calibration_Start(&hadc1);
 
@@ -156,7 +152,7 @@ int main(void)
 			break;
 	}
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-	HAL_Delay(300);
+	DWT_Delay_us(300000);
   }
   /* USER CODE END 3 */
 }
