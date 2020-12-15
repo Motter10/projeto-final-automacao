@@ -25,9 +25,24 @@
 #define CAPSULE_RECIPE_HOT_TEA			0b100
 #define CAPSULE_RECIPE_SODA				0b101
 
+/*
+ * Tipos de cápsulas
+ */
 typedef enum {NONE_CAPSULE_TYPE, RECIPE_WATER, RECIPE_SPARKLINK_WATER, RECIPE_ICE_TEA, RECIPE_HOT_TEA, RECIPE_SODA} CAPSULE_Type;
+
+/*
+ * Tipos de água
+ */
 typedef enum {NONE_WATER_TYPE, ICE_WATER, HOT_WATER, NATURAL_WATER} WATER_Type;
 
+/*
+ * capsule_type tipo da capsula
+ * water_type tipo da agua
+ * capsule_name nome da capsula
+ * water_time tempo em que bomba de agua deve ficar ativa
+ * water_temp temperatura em que a agua deve alcançar
+ * co2_time tempo em que a bomba de CO2 deve ficar ativa
+ */
 typedef struct
 {
 	CAPSULE_Type capsule_type;
@@ -38,6 +53,7 @@ typedef struct
 	uint32_t co2_time;
 }CAPSULE_Recipe_TypeDef;
 
+//Inicializa receita vazia
 #define RECIPE_NONE_CAPSULE_TYPE_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = NONE_CAPSULE_TYPE, \
 		.capsule_name = "Nenhuma", \
 		.water_type = NONE_WATER_TYPE, \
@@ -45,6 +61,7 @@ typedef struct
 		.water_temp = 0,\
 		.co2_time = 0}
 
+//Inicializa receita da capsula de TIPO 1 - Água
 #define RECIPE_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_WATER, \
 		.capsule_name = "Agua", \
 		.water_type = NONE_WATER_TYPE, \
@@ -52,6 +69,7 @@ typedef struct
 		.water_temp = 0,\
 		.co2_time = 0}
 
+//Inicializa receita da capsula de TIPO 2 - Água com gás
 #define RECIPE_SPARKLINK_WATER_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SPARKLINK_WATER, \
 		.capsule_name = "Agua com gás", \
 		.water_type = ICE_WATER, \
@@ -59,6 +77,7 @@ typedef struct
 		.water_temp = 15,\
 		.co2_time = 1500}
 
+//Inicializa receita da capsula de TIPO 3 - Chá Gelado
 #define RECIPE_ICE_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_ICE_TEA, \
 		.capsule_name = "Chá gelado", \
 		.water_type = ICE_WATER, \
@@ -66,6 +85,7 @@ typedef struct
 		.water_temp = 20,\
 		.co2_time = 0}
 
+//Inicializa receita da capsula de TIPO 4 - Chá Quente
 #define RECIPE_HOT_TEA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_HOT_TEA, \
 		.capsule_name = "Chá quente", \
 		.water_type = HOT_WATER, \
@@ -73,6 +93,7 @@ typedef struct
 		.water_temp = 60,\
 		.co2_time = 0}
 
+//Inicializa receita da capsula de TIPO 5 - Refrigerante
 #define RECIPE_SODA_DATA(RECIPE) CAPSULE_Recipe_TypeDef RECIPE = {.capsule_type = RECIPE_SODA, \
 		.capsule_name = "Refrigerante", \
 		.water_type = ICE_WATER, \

@@ -24,10 +24,11 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock(RTC_HandleTypeDef hrtc)
 	};
 	uint8_t insert_button = 0;
 
+	LCD_Clear();
 	while(1)
 	{
 		UTILS_get_Hour(hour, hrtc);
-		LCD_Clear();
+		LCD_First_Line();
 		LCD_Write_Buffer(hour);
 
 		BUTTON_CONFIRMAR(confirm_button);

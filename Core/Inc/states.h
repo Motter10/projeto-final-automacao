@@ -16,10 +16,11 @@
 #include "PWM.h"
 #include "DWT.h"
 
+/*
+ * Número de tipos de agua
+ */
 #define CHOICES_NUMBER 3
 
-//#define STATE_SHOWING_CLOCK 0
-//#define STATE_STARTING_PROCESS 1
 typedef enum{STATE_SHOWING_CLOCK, STATE_STARTING_PROCESS, STATE_STARTED_PROCESS} STATE;
 
 CAPSULE_Recipe_TypeDef STATE_Show_Clock(RTC_HandleTypeDef hrtc);
