@@ -10,8 +10,8 @@
 
 #include <stdint.h>
 #include <time.h>
-
-void UTILS_get_Hour(char *hour);
+#include "stm32f1xx_hal.h"
+void UTILS_get_Hour(char *hour, RTC_HandleTypeDef hrtc);
 
 uint32_t UTILS_To_Temp(uint32_t value);
 

@@ -16,7 +16,7 @@
  * @retval CAPSULE_Recipe_TypeDef capsula inserida
  *
  */
-CAPSULE_Recipe_TypeDef STATE_Show_Clock()
+CAPSULE_Recipe_TypeDef STATE_Show_Clock(RTC_HandleTypeDef hrtc)
 {
 	char hour[10];
 	CAPSULE_Recipe_TypeDef capsule = {
@@ -26,7 +26,7 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 
 	while(1)
 	{
-		UTILS_get_Hour(hour);
+		UTILS_get_Hour(hour, hrtc);
 		LCD_Clear();
 		LCD_Write_Buffer(hour);
 
@@ -45,7 +45,7 @@ CAPSULE_Recipe_TypeDef STATE_Show_Clock()
 			return capsule;
 		}
 		DWT_Delay_us(300000);
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 	}
 }
 
@@ -66,14 +66,27 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 	LCD_Clear();
 	LCD_Write_Buffer(capsule.capsule_name);
 	LCD_Seccond_Line();
+	LCD_Write_Buffer("Aguarde...");
 
 	GPIO_PinState pin_state;
+
+	uint32_t init_time = HAL_GetTick();
+	uint32_t current_time = init_time;
+	uint32_t last_time = init_time;
+	while(current_time < (init_time + 2000)){
+		current_time = HAL_GetTick();
+		if(current_time > last_time + 300){
+				HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
+				last_time = current_time;
+
+			}
+	}
 
 	//se for apenas água, escolhe entre quente, natural e gelada.
 	if(capsule.capsule_type == RECIPE_WATER)
 	{
 		//vetor para mostrar no display
-		char choices[CHOICES_NUMBER][16] = {"Natural", "Gelada", "Quente"};
+		char choices[CHOICES_NUMBER][16] = {"Natural", "Gelada  ", "Quente  "};
 		//vetor para obter qual informação foi escolhida
 		WATER_Type choices_values[CHOICES_NUMBER] = {NATURAL_WATER, ICE_WATER, HOT_WATER};
 
@@ -81,10 +94,12 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 		uint32_t choices_values_temp[CHOICES_NUMBER] = {0, 20, 60};
 
 
+		LCD_Clear();
 		uint8_t choice_index = 0;
+		LCD_Seccond_Line();
+		LCD_Write_Buffer("I-D p/ alterar");
 		while(1){
-
-			LCD_Clear();
+			LCD_First_Line();
 			LCD_Write_Buffer(choices[choice_index]);
 
 			Pressed_Type pressed_type = Get_Button_Pressed();
@@ -172,7 +187,7 @@ CAPSULE_Recipe_TypeDef STATE_Starting_Process(CAPSULE_Recipe_TypeDef capsule, AD
 			return capsule;
 		}
 
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 		HAL_Delay(300);
 	}
 }
@@ -190,7 +205,20 @@ void STATE_Started_Process(CAPSULE_Recipe_TypeDef capsule, ADC_HandleTypeDef had
 {
 	LCD_Clear();
 	LCD_Write_Buffer("Iniciando...");
-	HAL_Delay(1500);
+
+	uint32_t init_time = HAL_GetTick();
+	uint32_t current_time = init_time;
+	uint32_t last_time = init_time;
+
+	while(current_time < (init_time + 2000)){
+		current_time = HAL_GetTick();
+
+		if(current_time > last_time + 300){
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
+			last_time = current_time;
+
+		}
+	}
 
 	uint8_t confirm_button = 0;
 	while(1)

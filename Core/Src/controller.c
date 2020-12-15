@@ -42,7 +42,10 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 			sensor_channel_id = heater_block.adc_channel_id;
 			break;
 		case ICE_WATER:
-			LCD_Write_Buffer("Refrigerando a água.");
+			LCD_Write_Buffer("Refrigerando a ");
+			LCD_Seccond_Line();
+			LCD_Write_Buffer("água");
+
 			CONTROLLER_BLOCK_COOLER_DATA(cooler_block);
 			block = cooler_block;
 			//aciona CP1, compressor de refrigeração
@@ -71,7 +74,7 @@ void CONTROLLER_Execute(ADC_HandleTypeDef hadc, CAPSULE_Recipe_TypeDef capsule)
 		HAL_Delay(50);
 		current_time = HAL_GetTick();
 		if(current_time > (init_time + 300)){
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 			init_time = current_time;
 		}
 	}

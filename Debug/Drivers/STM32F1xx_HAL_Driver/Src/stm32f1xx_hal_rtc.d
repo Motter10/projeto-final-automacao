@@ -1,5 +1,6 @@
-Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/controller.h \
- ../Core/Inc/io.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.o: \
+ ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -26,15 +27,7 @@ Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/controller.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/utils.h ../Core/Inc/LCD_4.h ../Core/Inc/capsule.h \
- ../Core/Inc/ADC.h ../Core/Inc/PWM.h \
- ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
- ../Core/Inc/DWT.h ../Core/Inc/states.h
-
-../Core/Inc/controller.h:
-
-../Core/Inc/io.h:
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
@@ -91,19 +84,3 @@ Core/Src/states.o: ../Core/Src/states.c ../Core/Inc/controller.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
-
-../Core/Inc/utils.h:
-
-../Core/Inc/LCD_4.h:
-
-../Core/Inc/capsule.h:
-
-../Core/Inc/ADC.h:
-
-../Core/Inc/PWM.h:
-
-../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
-
-../Core/Inc/DWT.h:
-
-../Core/Inc/states.h:

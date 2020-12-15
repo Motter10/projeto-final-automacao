@@ -36,7 +36,7 @@ Pressed_Type Get_Button_Pressed()
 		if(HAL_GPIO_ReadPin(decrease_button.gpio_class, decrease_button.gpio_pin)){
 			return DECREASE_PRESSED;
 		}
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 		HAL_Delay(300);
 	}
 }

@@ -42,7 +42,7 @@ void PWM_Increase(PWM_TypeDef pwm_data)
 	uint32_t init_time = HAL_GetTick();
 	uint32_t current_time = init_time;
 
-	//pega qual o delau necessário para atingir o tempo de subida necessário;
+	//pega qual o delay necessário para atingir o tempo de subida;
 	//multiplica por mil para transformar em microssegundos
 	uint32_t delay = ((float)pwm_data.speed_time / duty_value_max) * 1000;
 
@@ -68,7 +68,7 @@ void PWM_Increase(PWM_TypeDef pwm_data)
 		//pisca led
 		current_time = HAL_GetTick();
 		if(current_time > (init_time + 300)){
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 			init_time = current_time;
 		}
 	}
@@ -91,7 +91,7 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 	uint32_t init_time = HAL_GetTick();
 	uint32_t current_time = init_time;
 
-	//pega qual o delau necessário para atingir o tempo de descida necessário;
+	//pega qual o delay necessário para atingir o tempo de descida;
 	//multiplica por mil para transformar em microssegundos
 	uint32_t delay = ((float)pwm_data.speed_time / duty_value_max) * 1000;
 
@@ -116,7 +116,7 @@ void PWM_Decrease(PWM_TypeDef pwm_data)
 		//pisca led
 		current_time = HAL_GetTick();
 		if(current_time > (init_time + 300)){
-			HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 			init_time = current_time;
 		}
 	}

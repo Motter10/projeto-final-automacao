@@ -15,14 +15,19 @@
  *
  * @param [out]hour vetor de char que será armazenado a hora
  */
-void UTILS_get_Hour(char* hour)
+void UTILS_get_Hour(char* hour, RTC_HandleTypeDef hrtc)
 {
-	  struct tm *sTm;
+//	  struct tm *sTm;
+//
+//	  time_t now = time (0);
+//	  sTm = gmtime (&now);
+//
+//	  strftime (hour, 9, "%H:%M:%S", sTm);
 
-	  time_t now = time (0);
-	  sTm = gmtime (&now);
+	  RTC_TimeTypeDef time;
+	  HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
 
-	  strftime (hour, 9, "%H:%M:%S", sTm);
+	  sprintf(hour, "%02d:%02d:%02d", time.Hours, time.Minutes, time.Seconds);
 	  return;
 }
 
